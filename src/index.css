@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --color-slate-gray: #97A3B6;
+    --color-cloud-gray: #CDD5E0;
+    --color-midnight-blue: #111729;
+    --color-steel-blue: #20293A;
+    --color-charcoal-blue: #364153;
+    --color-indigo-night: #1D1B48;
+
+    --font-vietnam: "Be Vietnam Pro", "sans-serif";
+}
+
+@layer base {
+    html {
+        font-family: var(--font-vietnam);
+    }
+
+    body {
+        color: var(--color-cloud-gray);
+        background-color: var(--color-steel-blue);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--color-cloud-gray);
+        font-weight: 500;
+    }
+
+    p, span {
+        color: var(--color-slate-gray)
+    }
+
+    span {
+        font-weight: 500;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    input, a, span {
+        font-size: var(--text-base);
+    }
+}
