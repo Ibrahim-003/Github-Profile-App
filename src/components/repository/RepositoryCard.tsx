@@ -1,9 +1,9 @@
-import License from "../assets/license.svg?react";
-import Fork from "../assets/fork.svg?react";
-import Star from "../assets/star.svg?react";
-import Container from "./basic/Container";
-import { RepositoryCardProps } from "./types";
-import { calculateDaysFromNow } from "../utils/utils";
+import License from "../../assets/images/license.svg?react";
+import Fork from "../../assets/images/fork.svg?react";
+import Star from "../../assets/images/star.svg?react";
+import Container from "../ui/Container";
+import { RepositoryCardProps } from "../../types/types";
+import { calculateDaysFromNow } from "../../utils/utils";
 
 const RepositoryCard: React.FC<RepositoryCardProps> = ({
   repoData,

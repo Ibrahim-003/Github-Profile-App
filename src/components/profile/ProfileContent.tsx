@@ -1,4 +1,4 @@
-import RepositoryList from "./RepositoryList";
+import RepositoryList from "../repository/RepositoryList";
 
 interface ProfileContentProps {
   login: string;

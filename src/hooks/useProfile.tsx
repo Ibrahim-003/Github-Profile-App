@@ -1,65 +1,41 @@
-import { useState, useEffect } from "react";
-import { ProfileMapped } from "../components/types";
-
-const MY_TOKEN =
-  "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";
-
-interface GithubProfile {
-  avatar_url: string;
-  login: string;
-  repos_url: string;
-  bio: string | null;
-  followers: number;
-  following: number;
-  location: string | null;
-  html_url: string;
-}
+import { useState, useEffect, useCallback } from "react";
+import { ProfileMapped } from "../types/types";
+import { githubApi } from "../services/githubApi";
+import { handleApiError } from "../utils/errorHandling";
+import { mapProfileData } from "../utils/mappers";
 
 export const useProfile = (userName: string) => {
-  const [profileData, setProfileData] = useState<ProfileMapped>();
+  const [profileData, setProfileData] = useState<ProfileMapped | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+
+  const getProfile = useCallback(async () => {
+    if (!userName) return;
+
+    setLoading(true);
+    setError(null);
+    setProfileData(null);
+
+    try {
+      const response = await githubApi.getUser(userName);
+
+      if (!response.ok) throw new Error(handleApiError(response));
+
+      const profile = await response.json();
+
+      setProfileData(mapProfileData(profile));
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Error desconocido");
+    } finally {
+      setLoading(false);
+    }
+  }, [userName]);
 
   useEffect(() => {
     if (!userName) return;
 
-    const getProfile = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const response = await fetch(
-          `https://api.github.com/users/${userName}`,
-          {
-            headers: {
-              Authorization: `Bearer ${MY_TOKEN}`,
-            },
-          }
-        );
-        if (!response.ok) throw new Error("The request failed!");
-        const profile: GithubProfile = await response.json();
-        const mappedProfile: ProfileMapped = {
-          avatarUrl: profile.avatar_url,
-          login: profile.login,
-          reposUrl: profile.repos_url,
-          bio: profile.bio,
-          followers: profile.followers,
-          following: profile.following,
-          location: profile.location,
-          repoUrl: profile.html_url,
-        };
-
-        setProfileData(mappedProfile);
-      } catch (error) {
-        if (error instanceof Error) {
-          console.error(error.message);
-          setError(error.message);
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
     getProfile();
-  }, [userName]);
+  }, [userName, getProfile]);
 
   return { profileData, loading, error };
 };

@@ -1,4 +1,4 @@
-import { ProfileComponentProps } from "./types";
+import { ProfileComponentProps } from "../../types/types";
 import ProfileContent from "./ProfileContent";
 import ProfileHeader from "./ProfileHeader";
 import ProfileImage from "./ProfileImage";

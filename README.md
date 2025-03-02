@@ -1,100 +1,117 @@
-# Github Profile App
+# GitHub Profile App
 
-## Descripcion
+<div align="center">
+  <img src="./src/assets/images/desktop-preview.webp" alt="GitHub Profile App Preview" width="600">
+  <p>Una aplicación moderna para explorar perfiles de GitHub</p>
+</div>
 
-Esta aplicación muestra una lista de cafés con detalles como nombre, imagen, precio, calificación, popularidad y disponibilidad. Los datos se obtienen de una fuente externa y se muestran en una interfaz de usuario atractiva.
+## Descripción
+GitHub Profile App es una aplicación web que permite buscar y visualizar información detallada sobre cualquier usuario de GitHub. Con una interfaz intuitiva y moderna, muestra datos como biografía, repositorios públicos, estadísticas de seguidores y contribuciones del perfil consultado.
 
-## Caracteristicas
-
-- **Listado de Productos**: Muestra una lista de cafés con detalles como nombre, imagen, precio, calificación, popularidad y disponibilidad.
-- **Filtro de Disponibilidad**: Permite a los usuarios filtrar los productos para mostrar solo los que están disponibles actualmente.
-- **Interfaz Responsiva**: La aplicación está diseñada para ser completamente responsiva y funcionar bien en dispositivos móviles, tabletas y escritorios.
-- **Diseño Atractivo**: Utiliza un diseño moderno y atractivo para mejorar la experiencia del usuario.
-- **Componentes Reutilizables**: Construida con componentes reutilizables de React para facilitar el mantenimiento y la escalabilidad.
-- **Tipado Estricto**: Utiliza TypeScript para asegurar un tipado estricto y reducir errores en el código.
-- **Optimización de Rendimiento**: Carga solo los datos necesarios y optimiza el rendimiento para una experiencia de usuario fluida.
-- **Pequeños Lotes**: Los cafés se tuestan en pequeños lotes y se envían frescos semanalmente.
-- **SVG Gráficos**: Incluye gráficos SVG personalizados para mejorar la estética visual.
-
-## Vista Previa
-
-![Captura del Proyecto](./src/assets/desktop-preview.png)
-
-Puedes ver la versión demo en vivo aquí: [Github Profile App](https://coffee-listing-app-psi.vercel.app/)
+## Características
+- 🔍 Búsqueda de perfiles de GitHub en tiempo real
+- 📂 Visualización de repositorios públicos
+- 📊 Estadísticas generales del usuario
+- 🎨 Interfaz amigable y responsiva
 
 ## Tecnologías Utilizadas
-
-- React
-- TypeScript
-- Tailwindcss
-
-## Instalación
-
-1. Clona el repositorio:
-   ```sh
-   git clone https://github.com/Ibrahim-003/Github-Profile-App.git
-   ```
-2. Navega al directorio del proyecto:
-   ```sh
-   cd github-profile-app-ts
-   ```
-3. Instala las dependencias:
-   ```sh
-   npm install
-   ```
-
-## Scripts Disponibles
-
-- `npm run dev`: Inicia el servidor de desarrollo.
-- `npm run build`: Compila la aplicación para producción.
-- `npm run preview`: Previsualiza la aplicación compilada.
-
-## Uso
-
-1. Inicia el servidor de desarrollo:
-   ```sh
-   npm run dev
-   ```
-2. Abre [http://localhost:5173](http://localhost:5173) en tu navegador para ver la aplicación.
+- ⚛️ **React** - Para la interfaz de usuario
+- 📝 **TypeScript** - Para tipado estático y mejor mantenimiento del código
+- 💅 **Tailwind CSS** - Para estilos modernos y responsivos
+- 🌍 **GitHub API** - Para obtener datos de los perfiles
 
 ## Estructura del Proyecto
-
-```simple-coffee-listing-ts/
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package.json
-├── public/
-│   └── favicon.ico
-├── README.md
-├── src/
-│   ├── App.tsx
-│   ├── assets/
-│   │   └── desktop-preview.png
-│   ├── components/
-│   │   ├── CoffeeCard.tsx
-│   │   └── CoffeeListing.tsx
-│   ├── index.css
-│   ├── main.tsx
-│   ├── types/
-│   │   └── Coffee.ts
-│   └── vite-env.d.ts
-├── tsconfig.app.json
-├── tsconfig.json
-├── tsconfig.node.json
-└── vite.config.ts
+```
+src/
+├── assets/           # Imágenes, iconos y recursos estáticos
+├── components/       # Componentes de React organizados por funcionalidad
+│   ├── layout/       # Componentes estructurales (HeroComponent, ContentComponent)
+│   ├── profile/      # Componentes relacionados con el perfil de usuario
+│   ├── repository/   # Componentes para mostrar repositorios
+│   ├── search/       # Componentes de búsqueda
+│   └── ui/           # Componentes de UI reutilizables
+├── config/           # Configuraciones de la aplicación
+├── hooks/            # Custom hooks para lógica reutilizable
+├── services/         # Servicios para comunicación con APIs
+├── types/            # Definiciones de tipos TypeScript
+└── utils/            # Funciones utilitarias y helpers
+    ├── errorHandling.ts  # Manejo de errores de API
+    ├── mappers.ts        # Funciones para transformar datos
+    └── utils.ts          # Utilidades generales
 ```
 
-## Autor 👨‍💻
+## Instalación y Uso
+### 1️⃣ Clonar el repositorio
+```bash
+git clone https://github.com/Ibrahim-003/Github-Profile-App.git
+cd Github-Profile-App
+```
 
-Desarrollado por **[Ibrahim Almeyda](https://github.com/Ibrahim-003)**.
+### 2️⃣ Instalar dependencias
+```bash
+npm install
+```
 
-## GithubAPI-Token
+### 3️⃣ Configurar variables de entorno
+Crea un archivo `.env` en la raíz del proyecto:
+```env
+VITE_GITHUB_TOKEN=tu_token_personal_de_github
+```
+> 📝 **Nota**: Puedes obtener un token personal en [GitHub Developer Settings](https://github.com/settings/tokens). Se recomienda usar un token para evitar limitaciones de la API.
 
-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
+### 4️⃣ Ejecutar en desarrollo
+```bash
+npm run dev
+```
+La aplicación estará disponible en `http://localhost:5173/`
 
-## Validar RepositoryList
+## Configuración de Variables de Entorno
+Para evitar restricciones en la API de GitHub, se recomienda utilizar un token de acceso. Crea un archivo `.env` en la raíz del proyecto y agrega:
+```env
+VITE_GITHUB_TOKEN=tu_token_aqui
+```
+Puedes obtener un token en [GitHub Developer Settings](https://github.com/settings/tokens).
 
-- Si tiene repositorios publicos
-    - Solicitar un maximo de 4 repositorios
-- No tiene ningun repositorio
+## Capturas de Pantalla
+![Vista Previa](./src/assets/images/desktop-preview.webp)
+
+## 🧪 Buenas Prácticas Implementadas
+- ✅ **Arquitectura modular** - Componentes y lógica organizados por funcionalidad
+- ✅ **Custom hooks** - Separación de lógica de negocio y presentación
+- ✅ **Mappers** - Transformación de datos de API a formatos optimizados para la UI
+- ✅ **Manejo de errores** - Sistema robusto para capturar y mostrar errores
+- ✅ **TypeScript** - Tipado estricto para prevenir errores en tiempo de desarrollo
+- ✅ **Componentes reutilizables** - Diseño modular para facilitar mantenimiento
+
+## 🔜 Mejoras Futuras
+- 📱 **Modo oscuro** - Implementación de tema claro/oscuro
+- 📊 **Gráficos de actividad** - Visualización de contribuciones y actividad
+- 🔍 **Búsqueda avanzada** - Filtros adicionales para búsqueda de usuarios
+- 📂 **Paginación de repositorios** - Ver más allá de los repositorios iniciales
+- 🌐 **Internacionalización** - Soporte para múltiples idiomas
+- 🧪 **Tests unitarios** - Implementación de pruebas para garantizar calidad
+
+## 👥 Contribuciones
+¡Las contribuciones son bienvenidas! Para contribuir:
+
+1. Haz un fork del repositorio
+2. Crea una nueva rama (`git checkout -b feature/amazing-feature`)
+3. Realiza tus cambios y haz commit (`git commit -m 'Add some amazing feature'`)
+4. Sube los cambios (`git push origin feature/amazing-feature`)
+5. Abre un Pull Request
+
+Por favor, asegúrate de seguir las convenciones de código y añadir tests para nuevas características.
+
+## 📄 Licencia
+Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+
+## 🙏 Agradecimientos
+- [GitHub API](https://docs.github.com/en/rest) por proporcionar acceso a los datos
+- [devChallenges.io](https://devchallenges.io/) por la inspiración del proyecto
+- Todos los contribuidores que han ayudado a mejorar esta aplicación
+
+---
+
+<div align="center">
+  <p>Desarrollado con ❤️ por <a href="https://github.com/Ibrahim-003">Ibrahim-003</a></p>
+</div>

@@ -1,6 +1,6 @@
-import { useRepos } from "../hooks/useRepos";
-import ProfileFooter from "./ProfileFooter";
-import RepositoryCard from "./RepositotyCard";
+import { useRepos } from "../../hooks/useRepos";
+import ProfileFooter from "../profile/ProfileFooter";
+import RepositoryCard from "./RepositoryCard";
 
 interface RepositoryList {
   reposUrl: string;

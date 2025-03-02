@@ -31,13 +31,6 @@ export interface ProfileComponentProps {
   profileMaped: ProfileMapped;
 }
 
-// export type ProfileComponentProps = { profileMaped: ProfileMapped } | UserNotFound;
-
-// export interface UserNotFound {
-//     message: string,
-//     documentation_url: string,
-//     status: string,
-// }
 
 export interface SearchBarProps {
   onSearchProfile: SearchProfileFunction;

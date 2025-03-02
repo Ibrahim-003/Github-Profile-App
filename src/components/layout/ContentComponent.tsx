@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useProfile } from "../hooks/useProfile";
-import ProfileComponent from "./ProfileComponent";
-import SearchBar from "./SearchBar";
-import { ContentComponentProps } from "./types";
+import { useProfile } from "../../hooks/useProfile";
+import ProfileComponent from "../profile/ProfileComponent";
+import SearchBar from "../search/SearchBar";
 
-const ContentComponent: React.FC<ContentComponentProps> = () => {
+const ContentComponent: React.FC = () => {
   const [userName, setUserName] = useState<string>("");
   const { profileData, loading, error } = useProfile(userName);
 
