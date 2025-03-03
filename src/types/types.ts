@@ -1,5 +1,11 @@
 export type SearchProfileFunction = (name: string) => void;
 
+export interface UsersMapped {
+  id: number;
+  avatarUrl: string;
+  login: string;
+}
+
 export interface ProfileMapped {
   avatarUrl: string;
   login: string;

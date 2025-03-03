@@ -22,25 +22,27 @@ const RepositoryList: React.FC<RepositoryList> = ({ reposUrl, repoUrl }) => {
 
   return (
     <>
-      <section
-        className={`w-full mx-auto ${
-          reposData.length > 0 ? "grid sm:grid-cols-2 justify-center gap-5" : ""
-        }`}
-      >
+      <section>
         {error && <p>{error}</p>}
         {reposData && reposData.length > 0 ? (
-          reposData?.map((repo) => (
-            <RepositoryCard
-              key={repo.id}
-              repoData={repo}
-              onClick={() => handleClick(repo.gitUrl)}
-            />
-          ))
+          <>
+            <section className={`w-full mx-auto ${
+          reposData.length > 0 ? "grid sm:grid-cols-2 justify-center gap-5" : ""
+        }`}>
+              {reposData?.map((repo) => (
+                <RepositoryCard
+                  key={repo.id}
+                  repoData={repo}
+                  onClick={() => handleClick(repo.gitUrl)}
+                />
+              ))}
+            </section>
+            <ProfileFooter repoUrl={repoUrl} />
+          </>
         ) : (
           <p className='text-center'>The user don't have any repository yet!</p>
         )}
       </section>
-      {reposData.length > 0 && <ProfileFooter repoUrl={repoUrl} />}
     </>
   );
 };

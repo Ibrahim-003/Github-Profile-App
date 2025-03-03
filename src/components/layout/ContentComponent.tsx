@@ -12,7 +12,7 @@ const ContentComponent: React.FC = () => {
   };
 
   return (
-    <section className='relative flex flex-col md:gap-[70px] md:pt-10 sm:px-8 px-4'>
+    <section className='relative flex flex-col gap-10 md:gap-22 md:pt-10 sm:px-8 px-4'>
       <SearchBar onSearchProfile={searchProfile} />
       {loading && <p>Loading...</p>}
       {error && (

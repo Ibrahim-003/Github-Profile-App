@@ -1,4 +1,10 @@
-import { ProfileMapped, RepoMapped } from "../types/types";
+import { UsersMapped, ProfileMapped, RepoMapped } from "../types/types";
+
+interface GithubUserResponse {
+  id: number;
+  avatar_url: string;
+  login: string;
+}
 
 interface GithubProfile {
   avatar_url: string;
@@ -53,3 +59,9 @@ export const mapRepoData = (repos: GithubRepo[]): RepoMapped[] => repos.map((rep
   updateDate: repo.created_at,
   gitUrl: repo.html_url,
 }));
+
+export const mapUsersData = (users: GithubUserResponse[]): UsersMapped[] => users.map((user) => ({
+  id: user.id,
+  avatarUrl: user.avatar_url,
+  login: user.login,
+})) 

@@ -1,7 +1,7 @@
 # GitHub Profile App
 
 <div align="center">
-  <img src="./src/assets/images/desktop-preview.webp" alt="GitHub Profile App Preview" width="600">
+  <img src="./src/assets/images/desktop-preview.avif" alt="GitHub Profile App Preview" width="600">
   <p>Una aplicación moderna para explorar perfiles de GitHub</p>
 </div>
 
@@ -10,15 +10,19 @@ GitHub Profile App es una aplicación web que permite buscar y visualizar inform
 
 ## Características
 - 🔍 Búsqueda de perfiles de GitHub en tiempo real
-- 📂 Visualización de repositorios públicos
-- 📊 Estadísticas generales del usuario
+- 👥 Sugerencias de perfiles potenciales mientras escribes
+- 📂 Visualización de repositorios públicos con detalles
+- 📊 Estadísticas generales del usuario (seguidores, siguiendo)
+- 🔗 Enlaces directos a perfiles y repositorios de GitHub
 - 🎨 Interfaz amigable y responsiva
+- 🚀 Carga optimizada de datos
 
 ## Tecnologías Utilizadas
 - ⚛️ **React** - Para la interfaz de usuario
 - 📝 **TypeScript** - Para tipado estático y mejor mantenimiento del código
 - 💅 **Tailwind CSS** - Para estilos modernos y responsivos
 - 🌍 **GitHub API** - Para obtener datos de los perfiles
+- 🔄 **Custom Hooks** - Para manejo de estado y lógica de negocio
 
 ## Estructura del Proyecto
 ```
@@ -30,14 +34,20 @@ src/
 │   ├── repository/   # Componentes para mostrar repositorios
 │   ├── search/       # Componentes de búsqueda
 │   └── ui/           # Componentes de UI reutilizables
-├── config/           # Configuraciones de la aplicación
+├── config/           # Configuraciones de la aplicación (API_CONFIG)
 ├── hooks/            # Custom hooks para lógica reutilizable
+│   ├── usePotencialProfile.tsx  # Hook para sugerencias de perfiles mientras se escribe
+│   ├── useProfile.tsx           # Hook para obtener datos del perfil seleccionado
+│   ├── useRepos.tsx             # Hook para obtener repositorios del usuario
+│   └── useSearch.tsx            # Hook para gestionar la búsqueda
 ├── services/         # Servicios para comunicación con APIs
+│   └── githubApi.ts  # Funciones para interactuar con la API de GitHub
 ├── types/            # Definiciones de tipos TypeScript
+│   └── types.ts      # Interfaces y tipos para toda la aplicación
 └── utils/            # Funciones utilitarias y helpers
     ├── errorHandling.ts  # Manejo de errores de API
-    ├── mappers.ts        # Funciones para transformar datos
-    └── utils.ts          # Utilidades generales
+    ├── mappers.ts        # Funciones para transformar datos de la API al formato de la aplicación
+    └── utils.ts          # Utilidades generales y funciones de ayuda
 ```
 
 ## Instalación y Uso
@@ -82,6 +92,8 @@ Puedes obtener un token en [GitHub Developer Settings](https://github.com/settin
 - ✅ **Manejo de errores** - Sistema robusto para capturar y mostrar errores
 - ✅ **TypeScript** - Tipado estricto para prevenir errores en tiempo de desarrollo
 - ✅ **Componentes reutilizables** - Diseño modular para facilitar mantenimiento
+- ✅ **Documentación de código** - Comentarios JSDoc en funciones importantes
+- ✅ **Optimización de rendimiento** - Uso de useCallback y dependencias optimizadas en hooks
 
 ## 🔜 Mejoras Futuras
 - 📱 **Modo oscuro** - Implementación de tema claro/oscuro

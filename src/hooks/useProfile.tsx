@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { ProfileMapped } from "../types/types";
 import { githubApi } from "../services/githubApi";
 import { handleApiError } from "../utils/errorHandling";
@@ -8,13 +8,16 @@ export const useProfile = (userName: string) => {
   const [profileData, setProfileData] = useState<ProfileMapped | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const previousSearch = useRef(userName);
 
   const getProfile = useCallback(async () => {
     if (!userName) return;
+    if (previousSearch.current === userName) return;
 
     setLoading(true);
     setError(null);
     setProfileData(null);
+    previousSearch.current = userName;
 
     try {
       const response = await githubApi.getUser(userName);

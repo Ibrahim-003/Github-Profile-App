@@ -1,37 +1,23 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { githubApi } from "../services/githubApi";
-
-interface ProfileMapped {
-    id: number;
-    avatar_url: string;
-    login: string;
-}
-
-interface GithubUserResponse {
-    id: number;
-    avatar_url: string;
-    login: string;
-}
+import { mapUsersData } from "../utils/mappers";
+import { UsersMapped } from "../types/types";
 
 export const usePotencialProfile = (search: string) => {
-    const [potencialProfiles, setPotencialProfiles] = useState<ProfileMapped[] | null>(null);
+    const [potencialProfiles, setPotencialProfiles] = useState<UsersMapped[] | null>(null);
     const [error, setError] = useState<string | null>(null);
 
-    const getPotencialProfile = async () => {
+    const getPotencialProfile = useCallback(async () => {
         try {
             const response = await githubApi.searchUsers(search, 3);
             if (!response.ok) throw new Error("Ocurrio un error inesperado.");
 
             const profiles = await response.json();
-            setPotencialProfiles(profiles.items.map((profile: GithubUserResponse) => ({
-                id: profile.id,
-                avatar_url: profile.avatar_url,
-                login: profile.login,
-            })));
+            setPotencialProfiles(mapUsersData(profiles.items));
         } catch (error) {
             setError(error instanceof Error ? error.message : "Ocurrio un error inesperado.");
         }
-    }
+    }, [search])
 
     useEffect(() => {
         if (search.length >= 3) {
@@ -39,7 +25,7 @@ export const usePotencialProfile = (search: string) => {
         } else {
             setPotencialProfiles(null);
         }
-    }, [search])
+    }, [search, getPotencialProfile])
 
     return {potencialProfiles, setPotencialProfiles, error}
 }

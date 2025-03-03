@@ -26,7 +26,7 @@ const SearchBar: React.FC<SearchBarProps> = ({onSearchProfile}) => {
   }
 
   return (
-    <section className="grid place-items-center gap-4 pt-6 px-4 sm:px-8">
+    <section className="grid place-items-center gap-8 pt-8 px-4 sm:px-8">
       <form onSubmit={handleSubmit} className="w-full">
         <div className='relative w-full max-w-[484px] mx-auto flex items-center gap-3 bg-steel-blue rounded-md p-4 border-2 border-transparent focus-within:border-blue-500 transition-colors duration-200 ease-in-out'>
           <button type='submit' className='cursor-pointer'>
@@ -41,7 +41,7 @@ const SearchBar: React.FC<SearchBarProps> = ({onSearchProfile}) => {
             className='min-w-[120px] w-full outline-none border-none'
           />
           {error && (
-            <p className='absolute right-0 -bottom-7 text-xs text-red-500 sm:text-sm'>
+            <p className='absolute left-0 -bottom-8 text-xs text-red-400 sm:text-sm'>
               {error}
             </p>
           )}
@@ -50,7 +50,7 @@ const SearchBar: React.FC<SearchBarProps> = ({onSearchProfile}) => {
       {!errorPotencial && potencialProfiles && potencialProfiles?.length > 0 && (
         <section className="w-full flex flex-col gap-2">
           {potencialProfiles.map((profile) => (
-            <UserCard key={profile.id} login={profile.login} avatarUrl={profile.avatar_url} onClick={handleClick} />
+            <UserCard key={profile.id} login={profile.login} avatarUrl={profile.avatarUrl} onClick={handleClick} />
           ))}
         </section>
       )}
