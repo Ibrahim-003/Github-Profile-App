@@ -1,7 +1,7 @@
 # GitHub Profile App
 
 <div align="center">
-  <img src="./src/assets/images/desktop-preview.avif" alt="GitHub Profile App Preview" width="600">
+  <img src="./src/assets/images/desktop-preview.webp" alt="GitHub Profile App Preview" width="600">
   <p>Una aplicación moderna para explorar perfiles de GitHub</p>
 </div>
 
