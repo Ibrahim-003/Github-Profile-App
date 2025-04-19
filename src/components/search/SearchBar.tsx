@@ -36,7 +36,7 @@ const SearchBar: React.FC<SearchBarProps> = ({onSearchProfile}) => {
             type='text'
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder='Search GitHub username...'
+            placeholder='Type User Name...'
             required
             className='min-w-[120px] w-full outline-none border-none'
           />
